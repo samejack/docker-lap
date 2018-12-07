@@ -1,2 +1,2 @@
 all:
-	docker build -t samejack/lap:latest ./docker
+	docker build -t samejack/lap:latest ./

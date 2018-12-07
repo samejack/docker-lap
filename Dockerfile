@@ -12,7 +12,7 @@ RUN a2enmod ssl
 RUN docker-php-ext-install pdo pdo_mysql
 
 RUN apt-get -y update
-RUN apt-get -y install imagemagick wget optipng
+RUN apt-get -y install imagemagick wget optipng supervisor cron
 
 # Clear APT cache
 RUN apt-get remove --purge -y software-properties-common && \
@@ -28,8 +28,9 @@ RUN curl -s http://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
 #ADD supervisord.conf /etc/supervisord.conf
-#ADD start.sh /usr/local/bin/start.sh
-#RUN chmod +x /usr/local/bin/start.sh
+ADD docker/sv-crond.conf /etc/supervisor/conf.d
+ADD docker/start.sh /usr/local/bin/start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
 WORKDIR /
 
