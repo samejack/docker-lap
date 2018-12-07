@@ -1,2 +1,7 @@
 # docker-lap
-App Server Docker includes Linux + Apache + PHP 
+App Server include service as follows:
+* Linux
+* Apache
+* PHP 
+* Supervisord
+* Crond
